@@ -1,184 +1,172 @@
-# South Park 3D Map 🏔️
+# 🏔️ South Park 3D Interactive Map
 
-Een interactieve 3D-kaart van South Park gebouwd met React Three Fiber, Rapier Physics en GSAP animaties.
+> *"Come on down to South Park and meet some friends of mine!"*
 
-## 📋 Project Omschrijving
-
-Dit project is een virtuele tour door South Park waar bezoekers verschillende Points of Interest (POI) kunnen verkennen. De kaart bevat 30+ locaties verdeeld over drie categorieën:
-
-**Houses** - Karakterhuizen zoals Stan, Kyle, Cartman, Kenny en meer
-**Buildings** - Gebouwen zoals de school, ziekenhuis, mall, en restaurants  
-**Landmarks** - Iconische plekken zoals de bus stop, South Park sign, en Stark's Pond
-
-Bij het selecteren van een locatie beweegt de camera vloeiend naar het object en verschijnt er informatie met character images die audio afspelen bij klik.
-
-## 🛠️ Technologieën
-
-- **React 18.3.1** - UI Framework
-- **React Three Fiber 8.17.10** - Three.js React renderer
-- **@react-three/drei 9.114.3** - Helpers voor R3F
-- **@react-three/rapier 1.4.0** - Physics engine (sneeuw systeem)
-- **Three.js 0.169.0** - 3D Graphics library
-- **GSAP 3.12.5** - Camera animaties
-- **Vite 5.4.11** - Build tool & dev server
-- **Blender** - 3D modeling
-
-## 🚀 Installatie
-
-```bash
-# Clone repository
-git clone [repository-url]
-
-# Navigeer naar project folder
-cd webMap
-
-# Dependencies installeren
-npm install
-
-# Development server starten
-npm run dev
-
-# Production build
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## 📁 Project Structuur
-
-```
-webMap/
-├── src/
-│   ├── App.jsx              # Hoofdapplicatie met audio/camera/state beheer
-│   ├── main.jsx             # React entry point
-│   ├── components/
-│   │   ├── UI/              # React UI componenten
-│   │   │   ├── InfoPanel.jsx      # POI informatie met character audio
-│   │   │   ├── IntroScreen.jsx    # Welkomstscherm
-│   │   │   ├── LoadingScreen.jsx  # Laadscherm met progress bar
-│   │   │   └── PoiList.jsx        # Navigatielijst met categorieën
-│   │   ├── Effects/
-│   │   │   └── SnowSystem.jsx     # Rapier physics sneeuw (1200 particles)
-│   │   ├── Environment/
-│   │   │   └── Clouds.jsx         # Procedurele wolken
-│   │   └── Models/
-│   │       └── Model.jsx          # GLB model loader
-│   ├── scenes/
-│   │   └── SouthParkScene.jsx     # Hoofd 3D scene met fog planes
-│   ├── data/
-│   │   └── poiData.js             # 30+ POI definities
-│   └── styles/
-│       ├── index.css              # Globale styles
-│       └── PoiList.css            # Navigatie styling
-├── public/
-│   ├── audio/               # 40+ audio bestanden (characters + ambient)
-│   ├── images/              # Character afbeeldingen
-│   │   └── characters/      # 35+ character images
-│   └── fonts/               # Custom fonts
-├── 3Dmodels/                # GLB/GLTF modellen (huizen, gebouwen, etc.)
-└── images/                  # Texturen en achtergronden
-```
-
-## ✨ Features
-
-### Interactie
-- ✅ 30+ klikbare Points of Interest
-- ✅ Gecategoriseerde navigatielijst (Houses/Buildings/Landmarks)
-- ✅ Vloeiende GSAP camera animaties naar POI's
-- ✅ HTML info panels met character afbeeldingen
-- ✅ Klik op characters om audio af te spelen
-
-### Physics (Rapier)
-- ✅ Sneeuwsysteem met 1200 physics-based particles
-- ✅ 30ms spawn interval voor realistische sneeuwval
-- ✅ Gravity-based falling met collision
-
-### Audio
-- ✅ Ambient vogelgeluiden (pauzeert tijdens character audio)
-- ✅ 35+ character-specifieke audio clips
-- ✅ South Park theme muziek bij sign
-- ✅ Easter egg: Crab People multipliceren bij klikken
-
-### Visueel
-- ✅ Procedurele wolken met blob-geometrie
-- ✅ Fog planes voor diepte-effect
-- ✅ Custom South Park color palette (#4DA6FF sky)
-- ✅ Loader met progress bar
-- ✅ Intro scherm met South Park branding
-
-### Easter Eggs
-- ✅ Crab People Lair - klik meerdere keren voor meer crabs
-- ✅ Chinpokomon audio in de mall
-- ✅ "Oh my God, they killed Kenny!" audio
-
-## 🎮 Controls
-
-- **Linker muisknop + slepen**: Camera roteren
-- **Scroll**: Zoom in/uit
-- **Rechter muisknop + slepen**: Camera verplaatsen
-- **Klik op locatie in lijst**: Navigeer naar POI
-- **Klik op character image**: Speel character audio af
-- **X knop**: Sluit info panel en keer terug naar overview
-
-## 🎨 Credits
-
-### 3D Modellen
-- **Eigen werk (Blender)**: South Park terrein/map basis
-- **Online bronnen**: South park wiki
-
-### Audio
-- Character quotes: South Park (Comedy Central)
-- Ambient sounds: Mixkit (vogels)
-- Bewerkt met Voicemod
-
-### Afbeeldingen
-- South Park Wiki voor character references
-- Eigen screenshots en edits
-
-## 📝 Technische Vereisten (Checklist)
-
-- [x] React met React Three Fiber (v8.17.10)
-- [x] Rapier physics engine (sneeuwsysteem)
-- [x] Eigen Blender-gemaakte map/terrein
-- [x] 3-5 eigen 3D-modellen
-- [x] Interactie (klik) met info display
-- [x] GSAP camera animaties
-- [x] Physics element (sneeuw easter egg)
-- [x] Audio integratie (ambient + 35+ character clips)
-- [x] Fullscreen ervaring
-- [x] Loader bij opstart
-- [x] Intro scherm
-
-## 🔧 Technische Keuzes
-
-### State Management
-React useState/useRef voor lokale state - geen Redux nodig voor deze scope.
-
-### Camera Animatie
-GSAP voor smooth tweening met `power2.inOut` easing. Camera positie en OrbitControls target worden simultaan geanimeerd.
-
-### Audio Systeem
-Twee audio tracks: 
-1. `birdsAudioRef` - Ambient loop die pauzeert tijdens character audio
-2. `characterAudioRef` - On-demand character clips met hogere volume voor speciale items
-
-### Performance
-- `useMemo` voor expensive operations (geometry pooling, scene cloning)
-- Rapier physics voor efficiënte snow simulation
-- Lazy loading van 3D modellen
-
-## 👨‍💻 Auteur
-
-**Emili**
-- School: Tech3 - Jaar 2
-- Datum: Januari 2026
-
-## 📄 Licentie
-
-Dit is een schoolproject voor educatieve doeleinden.
-South Park is eigendom van Comedy Central / Paramount.
+Een volledig interactieve 3D-webervaring waarmee je door het stadje South Park kunt navigeren. Klik op gebouwen, ontdek personages en luister naar iconische quotes - allemaal vanuit je browser.
 
 ---
 
-*"Oh my God, they rendered Kenny!"*
+## 🎬 Demo
+
+De applicatie start met een intro screen, gevolgd door een cinematische fly-in animatie vanaf het South Park welkomstbord. Vervolgens kan je vrij navigeren door de map of locaties selecteren uit de zijbalk.
+
+---
+
+## 🌟 Wat maakt dit project bijzonder?
+
+| Feature | Beschrijving |
+|---------|-------------|
+| 🏠 **30+ Locaties** | Alle iconische plekken: huizen van de boys, Tweek Bros Coffee, City Wok, de school, en meer |
+| 🎤 **35+ Audio Clips** | Klik op personages om hun bekendste quotes te horen |
+| ❄️ **Physics Sneeuw** | Schakel sneeuw in voor 1200 realistische vallende sneeuwvlokken |
+| 🎥 **Smooth Animaties** | Vloeiende camera bewegingen tussen locaties |
+| 🦀 **Easter Eggs** | Ontdek de Crab People... taste like crab, talk like people! |
+
+---
+
+## 🛠️ Technische Stack
+
+```
+Frontend Framework    →  React 18
+3D Rendering         →  React Three Fiber + Three.js
+Physics Engine       →  Rapier (via @react-three/rapier)
+Animaties            →  GSAP
+3D Modeling          →  Blender
+Build Tool           →  Vite
+```
+
+---
+
+## 🚀 Installatie & Starten
+
+```bash
+# Clone het project
+git clone [repository-url]
+cd webMap
+
+# Installeer dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open `http://localhost:5173` in je browser.
+
+---
+
+## 📂 Projectstructuur
+
+```
+webMap/
+│
+├── src/
+│   ├── App.jsx                    # Hoofdlogica: camera, audio, state
+│   ├── components/
+│   │   ├── UI/                    # Interface componenten
+│   │   │   ├── InfoPanel.jsx      # Locatie-info + character audio
+│   │   │   ├── PoiList.jsx        # Navigatie sidebar
+│   │   │   ├── IntroScreen.jsx    # Startscherm
+│   │   │   └── LoadingScreen.jsx  # Laadscherm met progress
+│   │   ├── Effects/
+│   │   │   └── SnowSystem.jsx     # Physics-based sneeuwsysteem
+│   │   ├── Environment/
+│   │   │   └── Clouds.jsx         # Procedurele wolken
+│   │   └── Models/
+│   │       └── Model.jsx          # 3D model loader met hover effect
+│   ├── scenes/
+│   │   └── SouthParkScene.jsx     # Hoofd 3D scene
+│   └── data/
+│       └── poiData.js             # Alle locatie definities
+│
+├── public/
+│   ├── audio/                     # 40+ audio bestanden
+│   └── images/characters/         # Character afbeeldingen
+│
+└── 3Dmodels/                      # GLB modellen (Blender exports)
+```
+
+---
+
+## 🎮 Besturing
+
+| Actie | Wat gebeurt er |
+|-------|----------------|
+| **Klik + Sleep** | Camera roteren |
+| **Scrollen** | In/uitzoomen |
+| **Klik op locatie (lijst)** | Camera vliegt naar locatie |
+| **Klik op character (panel)** | Audio afspelen |
+| **ESC of X** | Panel sluiten, terug naar overzicht |
+| **Snow toggle** | Sneeuw aan/uit zetten |
+
+---
+
+## ✨ Features in Detail
+
+### 🎥 Intro Sequence
+Bij het starten krijg je een welkomstscherm, daarna laadt de 3D scene op de achtergrond. Na het laden speelt de iconische South Park gitaar riff, gevolgd door een sunrise-effect en fly-in animatie vanaf het welkomstbord.
+
+### 🏘️ Points of Interest
+Meer dan 30 locaties onderverdeeld in:
+- **Houses** - Stan, Kyle, Cartman, Kenny, Butters, en meer
+- **Buildings** - School, City Hall, Tweek Bros, Mall, Skeeter's Bar
+- **Landmarks** - Bus Stop, South Park Sign, Stark's Pond
+
+### 🔊 Audio Systeem
+- Ambient vogelgeluiden die automatisch pauzeren tijdens character audio
+- Elk personage heeft een eigen quote
+- Volume balancing tussen ambient en character clips
+
+### ❄️ Sneeuwsysteem
+Toggle rechtsboven in het scherm. Activeert 1200 physics-gesimuleerde sneeuwvlokken die realistisch vallen en verdwijnen bij de grond. De lucht kleurt automatisch grijzer.
+
+### 🦀 Easter Eggs
+- Klik 5+ keer op de Crab People voor een verrassend effect
+- Luister naar het Chinpokomon thema in de mall
+- "Oh my God, they killed Kenny!" - je weet wat er gebeurt
+
+---
+
+## 🎨 Visuele Highlights
+
+- **Sunrise Animatie** - De lucht gaat van warm oranje naar helder blauw bij het opstarten
+- **Hover Glow** - Gebouwen lichten op wanneer je eroverheen hovert
+- **South Park Stijl UI** - Comic Sans, felle kleuren, dikke borders
+- **Procedurele Wolken** - Dynamisch gegenereerde wolken die bewegen en van kleur veranderen
+
+---
+
+## 🔧 Technische Aanpak
+
+### Camera Systeem
+GSAP wordt gebruikt voor alle camera animaties. Bij het selecteren van een POI worden zowel de camera positie als het focuspunt (OrbitControls target) simultaan geanimeerd voor een natuurlijke beweging.
+
+### Physics
+Het sneeuwsysteem draait op Rapier, een Rust-based physics engine gecompileerd naar WebAssembly. Elke sneeuwvlok is een RigidBody met gravity en collision detection.
+
+### Performance Optimalisaties
+- Model instantiëring met `useMemo` om re-renders te voorkomen
+- Efficiënte material handling voor hover effecten
+- Lazy loading van 3D assets
+
+---
+
+## 👤 Gemaakt door
+
+**Emilien**  
+Tech3 - Jaar 2  
+December 2025 - Januari 2026
+
+---
+
+## 📜 Disclaimer
+
+Dit project is gemaakt voor educatieve doeleinden.  
+South Park™ is eigendom van Comedy Central / Paramount Global.  
+Alle character assets en audio zijn gebruikt onder fair use voor een schoolproject.
+
+---
+
+<p align="center">
+  <i>"Screw you guys, I'm going home!"</i>
+</p>
