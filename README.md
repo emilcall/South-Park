@@ -125,8 +125,7 @@ webMap/
 
 ### 3D Modellen
 - **Eigen werk (Blender)**: South Park terrein/map basis
-- **AI Gegenereerd**: Diverse gebouwen en props
-- **Online bronnen**: [Specifieke credits indien van toepassing]
+- **Online bronnen**: South park wiki
 
 ### Audio
 - Character quotes: South Park (Comedy Central)
