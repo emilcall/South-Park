@@ -1,4 +1,4 @@
-import { useRef, useEffect, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -50,9 +50,6 @@ const Cloud = ({ position, scale, speed, snowActive }) => {
 const Clouds = ({ snowActive }) => {
   const cloudCount = snowActive ? 60 : 30
   const spacing = snowActive ? 4.5 : 8
-  
-  useEffect(() => {
-  }, [snowActive, cloudCount])
   
   const clouds = useMemo(() => {
     const result = []
