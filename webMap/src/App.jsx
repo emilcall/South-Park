@@ -518,7 +518,8 @@ function App() {
       setCrabPeopleImages(prev => [...prev, {
         x: Math.random() * (window.innerWidth - 200),
         y: Math.random() * (window.innerHeight - 200),
-        size: 150 + Math.random() * 100
+        size: 150 + Math.random() * 100,
+        rotation: (Math.random() - 0.5) * 40
       }])
     }
   }
@@ -638,7 +639,6 @@ function App() {
             <meshBasicMaterial color="white" />
           </mesh>
           
-          {/* Mist plane under the map */}
           <MistPlane />
 
           <Physics gravity={[0, -9.81, 0]}>
@@ -756,6 +756,20 @@ function App() {
               reviveAudio.volume = 0.5
               reviveAudio.play()
               
+              setTimeout(() => {
+                const fadeStepsAudio = 40
+                const fadeIntervalAudio = 4000 / fadeStepsAudio
+                let audioStep = 0
+                const audioFadeTimer = setInterval(() => {
+                  audioStep++
+                  reviveAudio.volume = Math.max(0.5 * (1 - audioStep / fadeStepsAudio), 0)
+                  if (audioStep >= fadeStepsAudio) {
+                    clearInterval(audioFadeTimer)
+                    reviveAudio.pause()
+                  }
+                }, fadeIntervalAudio)
+              }, 2000)
+              
               const sparrowPoi = poiData.find(poi => poi.id === 'sparrowprince')
               if (sparrowPoi) {
                 handlePoiClick(sparrowPoi)
@@ -786,13 +800,16 @@ function App() {
                 resumeBirdsAudio()
               }, 1000)
             } else {
-              // Kill the sound mode - show black transition and start camera simultaneously
               setScopeTransition(true)
               const sparrowPoi = poiData.find(poi => poi.id === 'sparrowprince')
-              if (sparrowPoi) {
+              
+              if (selectedPoi?.id === 'sparrowprince') {
+                setTimeout(() => {
+                  setShowScope(true)
+                }, 1000)
+              } else if (sparrowPoi) {
                 handlePoiClick(sparrowPoi, {scopeMode: true})
               }
-              // Fade out black screen after 1.5 seconds
               setTimeout(() => {
                 setScopeTransition(false)
               }, 1500)
@@ -829,7 +846,6 @@ function App() {
         </button>
       )}
 
-      {/* Black screen transition */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -843,7 +859,6 @@ function App() {
         pointerEvents: scopeTransition ? 'auto' : 'none',
       }} />
 
-      {/* Scope overlay and Shoot button */}
       {showScope && (
         <div style={{
           position: 'fixed',
@@ -854,7 +869,6 @@ function App() {
           zIndex: 150,
           pointerEvents: 'none',
         }}>
-          {/* Black bar left */}
           <div style={{
             position: 'absolute',
             top: 0,
@@ -864,7 +878,6 @@ function App() {
             backgroundColor: '#000',
             zIndex: 151,
           }} />
-          {/* Black bar right */}
           <div style={{
             position: 'absolute',
             top: 0,
@@ -874,7 +887,6 @@ function App() {
             backgroundColor: '#000',
             zIndex: 151,
           }} />
-          {/* Scope image centered and smaller */}
           <img
             src="/images/scope.png"
             alt="Scope Overlay"
@@ -894,28 +906,22 @@ function App() {
           />
           <button
             onClick={() => {
-              // Play gun-shot sound and stop bird audio
               const gunAudio = new Audio('/audio/gun-shot-sound-effect-224087.mp3')
               gunAudio.volume = 0.4
               gunAudio.play()
-              // Stop birds audio
               if (birdsAudioRef.current) {
                 birdsAudioRef.current.pause()
                 birdsAudioRef.current.currentTime = 0
               }
-              // Show blood effect after 0.2 seconds
               setTimeout(() => {
                 setShowBloodEffect(true)
               }, 200)
-              // Hide blood effect after 1.3 seconds
               setTimeout(() => {
                 setShowBloodEffect(false)
               }, 1300)
-              // Delay sparrow transparency by 0.5 second
               setTimeout(() => {
                 setSparrowShot(true)
               }, 500)
-              // Delay hiding the scope by 1.5 seconds
               setTimeout(() => {
                 setShowScope(false)
               }, 1500)
@@ -983,6 +989,7 @@ function App() {
             objectFit: 'contain',
             zIndex: 1000,
             pointerEvents: 'none',
+            transform: `rotate(${img.rotation}deg)`,
             animation: 'fadeInCrab 0.5s ease-out'
           }}
         />

@@ -192,7 +192,7 @@ export const poiData = [
     cameraTarget: [-23.93, -34, 5.47],
     cameraSide: 'left',
     scale: 1,
-    image: ['/images/characters/FatherMaxiCurrent.webp', '/images/characters/jesus.webp'],
+    image: ['/images/characters/FatherMaxiCurrent.webp', '/images/characters/Jesus.webp'],
     description: "Where Father Maxi preaches and definitely doesn't do anything weird. Jesus attends sometimes. Actual Jesus. He's cool.",
     category: 'other'
   },

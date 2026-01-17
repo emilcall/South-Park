@@ -5,21 +5,56 @@ import { useGLTF } from '@react-three/drei'
 import Model from '../components/Models/Model'
 import { poiData } from '../data/poiData'
 
-const BloodSphere = ({ position }) => {
-  const meshRef = useRef()
+const MistCloud = ({ position }) => {
+  const groupRef = useRef()
   const [scale, setScale] = useState(0.1)
+  const [opacity, setOpacity] = useState(0.6)
+  const [fadeOut, setFadeOut] = useState(false)
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
   
   useFrame((state, delta) => {
-    if (scale < 2) {
-      setScale(prev => Math.min(prev + delta * 20, 2))
+    if (scale < 3) {
+      setScale(prev => Math.min(prev + delta * 6, 3))
+    }
+    
+    if (fadeOut && opacity > 0) {
+      setOpacity(prev => Math.max(prev - delta * 0.2, 0))
+    }
+    
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.3
     }
   })
   
   return (
-    <mesh ref={meshRef} position={[position[0], position[1], position[2]]} scale={scale}>
-      <sphereGeometry args={[0.5, 32, 32]} />
-      <meshBasicMaterial color="#8B0000" />
-    </mesh>
+    <group ref={groupRef} position={[position[0], position[1], position[2]]} scale={scale}>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.5, 16, 16]} />
+        <meshBasicMaterial color="#808080" transparent opacity={opacity * 0.7} depthWrite={false} />
+      </mesh>
+      <mesh position={[0.3, 0.1, 0.2]}>
+        <sphereGeometry args={[0.4, 16, 16]} />
+        <meshBasicMaterial color="#909090" transparent opacity={opacity * 0.5} depthWrite={false} />
+      </mesh>
+      <mesh position={[-0.2, 0.15, -0.1]}>
+        <sphereGeometry args={[0.35, 16, 16]} />
+        <meshBasicMaterial color="#707070" transparent opacity={opacity * 0.6} depthWrite={false} />
+      </mesh>
+      <mesh position={[0.1, -0.1, 0.25]}>
+        <sphereGeometry args={[0.45, 16, 16]} />
+        <meshBasicMaterial color="#858585" transparent opacity={opacity * 0.4} depthWrite={false} />
+      </mesh>
+      <mesh position={[-0.15, 0.2, 0.15]}>
+        <sphereGeometry args={[0.3, 16, 16]} />
+        <meshBasicMaterial color="#959595" transparent opacity={opacity * 0.5} depthWrite={false} />
+      </mesh>
+    </group>
   )
 }
 
@@ -46,7 +81,6 @@ const HeavenlyGlow = ({ fading }) => {
   
   return (
     <group position={crossPosition}>
-      {/* Point light to illuminate the church */}
       <pointLight
         position={[0, 20, 0]}
         intensity={intensity * 200}
@@ -55,7 +89,6 @@ const HeavenlyGlow = ({ fading }) => {
         decay={1}
       />
       
-      {/* Additional point light closer to ground */}
       <pointLight
         position={[0, 5, 0]}
         intensity={intensity * 120}
@@ -64,7 +97,6 @@ const HeavenlyGlow = ({ fading }) => {
         decay={1}
       />
       
-      {/* Bright spotlight from above */}
       <spotLight
         ref={lightRef}
         position={[0, 100, 0]}
@@ -76,7 +108,6 @@ const HeavenlyGlow = ({ fading }) => {
         castShadow={false}
       />
       
-      {/* Visible light beam cone - smaller radius */}
       <mesh position={[0, 55, 0]} rotation={[0, 0, 0]}>
         <coneGeometry args={[5, 110, 32, 1, true]} />
         <meshBasicMaterial 
@@ -88,7 +119,6 @@ const HeavenlyGlow = ({ fading }) => {
         />
       </mesh>
       
-      {/* Inner brighter beam - smaller */}
       <mesh position={[0, 55, 0]} rotation={[0, 0, 0]}>
         <coneGeometry args={[2.5, 110, 32, 1, true]} />
         <meshBasicMaterial 
@@ -100,15 +130,14 @@ const HeavenlyGlow = ({ fading }) => {
         />
       </mesh>
       
-      {/* Glowing particles/dust in the beam */}
       <points position={[0, 55, 0]}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
             count={500}
             array={new Float32Array(Array.from({length: 1500}, (_, i) => {
-              if (i % 3 === 1) return (Math.random() - 0.5) * 110 // Y spread along beam
-              return (Math.random() - 0.5) * 5 // X and Z spread - smaller
+              if (i % 3 === 1) return (Math.random() - 0.5) * 110
+              return (Math.random() - 0.5) * 5
             }))}
             itemSize={3}
           />
@@ -227,11 +256,9 @@ const SouthParkScene = ({ onPoiClick, selectedPoi, debugMode = false, onOpenExte
         />
       ))}
       {fogPlanes}
-      {/* Blood effect at correct Y position */}
       {showBloodEffect && sparrowPrincePoi && (
-        <BloodSphere position={[sparrowPrincePoi.cameraTarget[0], 0, sparrowPrincePoi.cameraTarget[2]]} />
+        <MistCloud position={[sparrowPrincePoi.cameraTarget[0], 0, sparrowPrincePoi.cameraTarget[2]]} />
       )}
-      {/* Heavenly glow effect from cross */}
       {showHeavenlyGlow && <HeavenlyGlow fading={heavenlyGlowFading} />}
     </Suspense>
   )

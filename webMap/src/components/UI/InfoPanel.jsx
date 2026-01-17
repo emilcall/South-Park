@@ -106,7 +106,7 @@ const InfoPanel = ({ poi, onClose, crabPeopleImages, onCrabClick, onPlayAudio, o
     
     const filename = imagePath.split('/').pop()
     
-    if (filename === 'jesus.webp' && onJesusClick) {
+    if (filename === 'Jesus.webp' && onJesusClick) {
       onJesusClick()
       return
     }
@@ -192,7 +192,7 @@ const InfoPanel = ({ poi, onClose, crabPeopleImages, onCrabClick, onPlayAudio, o
             {images.map((img, idx) => {
               const filename = img.split('/').pop()
               const hasAudio = !!characterAudioMap[filename]
-              const isJesus = filename === 'jesus.webp'
+              const isJesus = filename === 'Jesus.webp'
               const hasInteraction = hasAudio || !!poi.externalUrl || isJesus
               const isSPSign = filename === 'southpark.webp'
               

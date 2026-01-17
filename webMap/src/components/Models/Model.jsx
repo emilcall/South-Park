@@ -28,7 +28,7 @@ const Model = ({ poi, onClick, isSelected, debugMode = false, onOpenExternalUrl,
     const targetIntensity = (hovered && !isSelected && introComplete) ? 0.5 : 0
     const fadeSpeed = 4
     
-    // Smoothly interpolate towards target
+
     if (currentHoverIntensity.current < targetIntensity) {
       currentHoverIntensity.current = Math.min(currentHoverIntensity.current + delta * fadeSpeed, targetIntensity)
     } else if (currentHoverIntensity.current > targetIntensity) {
@@ -40,6 +40,9 @@ const Model = ({ poi, onClick, isSelected, debugMode = false, onOpenExternalUrl,
         if (poi.id === 'sparrowprince' && sparrowReviving) {
           child.material.emissive = new THREE.Color(0xFFD700)
           child.material.emissiveIntensity = glowIntensity
+        } else if (poi.id === 'sparrowprince' && sparrowShot) {
+          child.material.emissive = new THREE.Color(0x88CCFF)
+          child.material.emissiveIntensity = 0.3
         } else if (currentHoverIntensity.current > 0.01) {
           child.material.emissive = new THREE.Color(0xFFCC00)
           child.material.emissiveIntensity = currentHoverIntensity.current
@@ -101,7 +104,6 @@ const Model = ({ poi, onClick, isSelected, debugMode = false, onOpenExternalUrl,
         onPointerOver={poi.hitboxScale ? undefined : (poi.interactive !== false ? handlePointerOver : undefined)}
         onPointerOut={poi.hitboxScale ? undefined : (poi.interactive !== false ? handlePointerOut : undefined)}
       />
-      {/* Custom smaller hitbox for POIs with hitboxScale - positioned at cameraTarget relative to position */}
       {poi.hitboxScale && poi.cameraTarget && (
         <mesh
           position={[
