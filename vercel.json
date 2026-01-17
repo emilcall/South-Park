@@ -1,0 +1,6 @@
+{
+  "framework": "vite",
+  "buildCommand": "cd webMap && npm install && npm run build",
+  "outputDirectory": "webMap/dist",
+  "installCommand": "cd webMap && npm install"
+}
