@@ -1,0 +1,572 @@
+export const poiData = [
+  {
+    id: 'map',
+    name: 'Terrain',
+    model: '/3Dmodels/map_compressed.glb',
+    position: [0, -34, 0],
+    scale: 1,
+    description: 'Het terrein van South Park.',
+    category: 'terrain',
+    interactive: false
+  },
+  
+  {
+    id: 'school',
+    name: 'South Park Elementary',
+    model: '/3Dmodels/school_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-33.21, -34, 18.43],
+    scale: 1,
+    image: '/images/characters/Principal_Victoria.webp',
+    description: "Where kids learn about sexual harassment, Scientology, and why you shouldn't f*ck with Chef's salty chocolate balls. M'kay?",
+    category: 'main'
+  },
+  {
+    id: 'busstop',
+    name: 'Bus Stop',
+    model: '/3Dmodels/busstop_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [4.10, -34, 24.06],
+    cameraDistance: 2,
+    cameraHeight: -0.1,
+    cameraTiltAngle: 25,
+    cameraSide: 'front',
+    scale: 1,
+    image: '/images/characters/Crabtree.webp',
+    description: "The legendary spot where four foul-mouthed kids wait for Ms. Crabtree to drive them to their doom. RIP you beautiful, gravelly-voiced angel.",
+    category: 'main'
+  },
+  
+  {
+    id: 'stanshouse',
+    name: "Stan's House",
+    model: '/3Dmodels/marshshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [19.89, -34, 24.42],
+    scale: 1,
+    image: ['/images/characters/Stan-marsh-0.webp', '/images/characters/Randy_transparent_cockmagic.webp', '/images/characters/Sharon_Work-out.webp', '/images/characters/Shelly.webp'],
+    description: "Stan Marsh's place. Where Sparky the gay dog lives, Randy gets drunk and yells 'I'm sorry, I thought this was America!', and Shelly beats the crap out of everyone.",
+    category: 'house'
+  },
+  {
+    id: 'cartmanshouse',
+    name: "Cartman's House",
+    model: '/3Dmodels/cartmanshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [15.25, -34, 23.22],
+    scale: 1,
+    image: ['/images/characters/Eric-cartman.webp', '/images/characters/Liane_Cartman0.webp'],
+    description: "Home of Eric Theodore Cartman, the fat-ass who ate Scott Tenorman's parents in chili. His mom Liane is the town bicycle, everyone's had a ride. She also made German scheisse videos.",
+    category: 'house'
+  },
+  {
+    id: 'kylehouse',
+    name: "Kyle's House",
+    model: '/3Dmodels/broflovskishouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [18.40, -34, 30.20],
+    cameraSide: 'front',
+    scale: 1,
+    image: ['/images/characters/Kyle-broflovski.webp', '/images/characters/Gerald-broflovski.webp', '/images/characters/MrsBroflovski.webp', '/images/characters/Ike-current.webp', '/images/characters/Mr._Hankey_transparent.webp'],
+    description: "The Broflovski residence. Kyle's mom is a big fat b*tch, she's the biggest b*tch in the whole wide world! Also, Ike, kick the baby.",
+    category: 'house'
+  },
+  {
+    id: 'kennyshouse',
+    name: "Kenny's House",
+    model: '/3Dmodels/kennyshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [39.91, -34, 15.21],
+    targetHeight: -1,
+    scale: 1,
+    image: ['/images/characters/KennyMcCormick.webp', '/images/characters/StuartMcCormickNew.webp', '/images/characters/Carol_2010.webp'],
+    description: "Kenny McCormick's poverty-stricken shack. He dies here a lot. Like, a LOT. His parents are always high on paint thinner and cheese. Mmmph mmmph mmmph!",
+    category: 'house'
+  },
+  {
+    id: 'buttershouse',
+    name: "Butters' House",
+    model: '/3Dmodels/stotchshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [11.33, -34, 22.92],
+    scale: 1,
+    image: ['/images/characters/ButtersStotch.webp', '/images/characters/Stephen-stotch.webp', '/images/characters/LindaStotch.webp'],
+    description: "Butters Stotch lives here. Poor little guy gets grounded every episode. His dad might be secretly going to bath houses. You're grounded, mister!",
+    category: 'house'
+  },
+  
+  {
+    id: 'citywok',
+    name: 'City Wok',
+    model: '/3Dmodels/citywok_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-20.00, -34, -4.46],
+    scale: 1,
+    image: '/images/characters/City-wok-guy.webp',
+    description: "Owned by Dr. Janus. Wait, no, it's Tuong Lu Kim! Or is it? Harro, welcome to Shity Wok, can I take-a you order prease? No Mongorians allowed!",
+    category: 'business'
+  },
+  {
+    id: 'tweekbros',
+    name: 'Tweek Bros Coffee',
+    model: '/3Dmodels/tweekbros_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [9, -34, 0.75],
+    scale: 1,
+    image: '/images/characters/Tweek_pic.webp',
+    description: "Tweek's parents' coffee shop. Their secret ingredient? Meth. That's why Tweek is always tweaking the f*ck out. AAHH! Too much pressure!",
+    category: 'business'
+  },
+  {
+    id: 'mall',
+    name: 'South Park Mall',
+    model: '/3Dmodels/mall_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [30, -34, -8.02],
+    scale: 1,
+    image: ['/images/characters/1200_900.jpeg'],
+    description: "The South Park Mall. Where kids learn about consumerism, Hot Topic exists, and you can buy Chinpokomon. Also, the Easter Bunny works here.",
+    category: 'business'
+  },
+  {
+    id: 'jimbosgunshop',
+    name: "Jimbo's Guns",
+    model: '/3Dmodels/jimbosgunshop_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-26.37, -34, -4.95],
+    scale: 1,
+    image: ['/images/characters/JimboKernBestImage.webp', '/images/characters/NedG_2.webp'],
+    description: "Jimbo and Ned's gun shop. It's coming right for us! Remember: always yell that before shooting anything. NRA approved, kids!",
+    category: 'business'
+  },
+  {
+    id: 'bank',
+    name: 'Bank',
+    model: '/3Dmodels/bank_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [10.39, -34, 11.07],
+    scale: 1,
+    image: '/images/characters/Benny.webp',
+    description: "The bank where the economy gets destroyed every other season. They keep Mr. Jefferson's money and definitely don't launder cartel cash. Probably.",
+    category: 'business'
+  },
+  
+  {
+    id: 'cityhall',
+    name: 'City Hall',
+    model: '/3Dmodels/cityhall_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-12.53, -34, 7.60],
+    scale: 1,
+    image: '/images/characters/MayorMcdaniels.webp',
+    description: "Mayor McDaniels runs this shit show. Where stupid town meetings happen and ManBearPig is still ignored. Super cereal.",
+    category: 'government'
+  },
+  {
+    id: 'policestation',
+    name: 'Police Station',
+    model: '/3Dmodels/policestation_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-20.73, -34, 10.10],
+    scale: 1,
+    image: ['/images/characters/Officer-barbrady.webp', '/images/characters/Murphy-mitch-harris.webp'],
+    description: "Home of Officer Barbrady, the dumbest cop in America, and Sergeant Yates who really loves his job. Nice work, boys!",
+    category: 'government'
+  },
+  {
+    id: 'postoffice',
+    name: 'Post Office',
+    model: '/3Dmodels/postoffice_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [3.16, -34, 10.18],
+    scale: 1,
+    description: "Where mail gets delivered by people who are definitely NOT going postal. Totally safe. No one has ever gone crazy here. Ever.",
+    category: 'government'
+  },
+  
+  {
+    id: 'church',
+    name: 'Church',
+    model: '/3Dmodels/church_compressed (1).glb',
+    position: [0, -34, 0],
+    cameraTarget: [-23.93, -34, 5.47],
+    cameraSide: 'left',
+    scale: 1,
+    image: ['/images/characters/FatherMaxiCurrent.webp', '/images/characters/jesus.webp'],
+    description: "Where Father Maxi preaches and definitely doesn't do anything weird. Jesus attends sometimes. Actual Jesus. He's cool.",
+    category: 'other'
+  },
+  {
+    id: 'cinema',
+    name: 'Cinema',
+    model: '/3Dmodels/cinema_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [3.43, -34, -2.31],
+    scale: 1,
+    image: ['/images/characters/Terrance.transparent.webp', '/images/characters/Phillip.transparent.webp'],
+    description: "The movie theater. Ass, Terrance and Phillip, and other culturally important films premiere here. Also where Kyle's mom blamed Canada.",
+    category: 'other'
+  },
+  {
+    id: 'starkspond',
+    name: "Stark's Pond",
+    model: '/3Dmodels/starkspond_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-35.45, -34, 43.92],
+    scale: 1,
+    hitboxScale: 0.5,
+    image: '/images/characters/Manbearpig_no_blood.webp',
+    description: "The pond where Old Farmer Carl was killed by ManBearPig. Or was he? Kids come here to be emo, fish, and contemplate existence.",
+    category: 'nature'
+  },
+  {
+    id: 'playground',
+    name: 'Playground',
+    model: '/3Dmodels/playground_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [18.03, -34, 11.49],
+    scale: 1,
+    image: '/images/characters/Homeless_People.webp',
+    description: "Where Cartman gets his ass kicked daily. Also where Craig flips people off and kids learn important life lessons from homeless people.",
+    category: 'other'
+  },
+  {
+    id: 'spsign',
+    name: 'South Park Sign',
+    model: '/3Dmodels/spsign_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [6.74, -34, 42.09],
+    targetHeight: 3.5,
+    scale: 1,
+    image: ['/images/characters/southpark.webp'],
+    description: "Come on down to South Park and meet some friends of mine! Population: Constantly decreasing due to death, crab people, and satanic cults.",
+    category: 'landmark'
+  },
+  {
+    id: 'communitycenter',
+    name: 'Community Center',
+    model: '/3Dmodels/communitycenter_compressed (2).glb',
+    position: [0, -34, 0],
+    cameraTarget: [-20.92, -34, 19.90],
+    scale: 1,
+    description: "Where AA meetings happen, metrosexuals gather, and the town occasionally worships Cthulhu. Also great for dodge ball tournaments.",
+    category: 'other'
+  },
+  {
+    id: 'gazette',
+    name: 'South Park Gazette',
+    model: '/3Dmodels/gazette_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [1.96, -34, 10.95],
+    scale: 1,
+    image: '/images/characters/Tom-thompson.webp',
+    description: "The South Park Gazette newspaper office. They report on ManBearPig sightings that no one believes and other hard-hitting journalism.",
+    category: 'business'
+  },
+  
+  {
+    id: 'chefshouse',
+    name: "Chef's House",
+    model: '/3Dmodels/chefshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-3.71, -34, -0.85],
+    cameraSide: 'right',
+    scale: 1,
+    image: '/images/characters/JeromeChef.webp',
+    description: "RIP Jerome 'Chef' McElroy. He taught kids about making love, not about Scientology. Now he's a Darth Chef zombie. Goddammit.",
+    category: 'house'
+  },
+  {
+    id: 'burchshouse',
+    name: "Burch's House",
+    model: '/3Dmodels/burchshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [3.35, -34, 19.58],
+    scale: 1,
+    image: '/images/characters/Timmy.webp',
+    description: "Timmy's house! TIMMAH! TIMMAY! Living here in a wheelchair, being awesome, and occasionally joining Crips gang. Gobbles lives here too!",
+    category: 'house'
+  },
+  {
+    id: 'donavanshouse',
+    name: "Donavan's House",
+    model: '/3Dmodels/donavanshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-4.42, -34, 20.87],
+    scale: 1,
+    image: '/images/characters/Clyde_d.webp',
+    description: "Clyde Donovan's house. He cries a lot, his mom died from constipation, and he's the second fattest kid in class. Poor bastard.",
+    category: 'house'
+  },
+  {
+    id: 'garrisonshouse',
+    name: "Garrison's House",
+    model: '/3Dmodels/garrisonshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-4.10, -34, -9.23],
+    cameraSide: 'front',
+    scale: 1,
+    image: ['/images/characters/Mr._Herbert_Garrison.webp', '/images/characters/Mr-Slave.transparent.webp', '/images/characters/MrHatTransparent.webp'],
+    description: "Mr. Garrison's house. Where Mr. Hat used to live, then Mr. Slave, then Mr. President. The walls have seen some sh*t. M'kay.",
+    category: 'house'
+  },
+  {
+    id: 'mackeyshouse',
+    name: "Mackey's House",
+    model: '/3Dmodels/mackeyshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-32.57, -34, 3.63],
+    scale: 1,
+    image: '/images/characters/Mr._Mackey.png',
+    description: "Mr. Mackey's house, m'kay? Where he lives with his giant head and lectures about drugs being bad, m'kay? Don't do drugs, m'kay.",
+    category: 'house'
+  },
+  {
+    id: 'newkidshouse',
+    name: "New Kid's House",
+    model: '/3Dmodels/newkidshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [13.67, -34, 29.80],
+    cameraSide: 'front',
+    scale: 1,
+    image: '/images/characters/The_New_Kid_Transparent.webp',
+    description: "The Douchebag/Buttlord residence from Stick of Truth and Fractured But Whole. Home of the New Kid. Pick your class, player.",
+    category: 'house'
+  },
+  {
+    id: 'stevenshouse',
+    name: "Stevens' House",
+    model: '/3Dmodels/stevenshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-13.04, -34, 20.99],
+    scale: 1,
+    image: '/images/characters/Bebe.webp',
+    description: "Bebe Stevens' house. She's the hot blonde girl every boy had a crush on when she got boobs. Also Wendy's frenemy. Stupid spoiled whore!",
+    category: 'house'
+  },
+  {
+    id: 'testaburgersshouse',
+    name: "Testaburgers' House",
+    model: '/3Dmodels/testaburgersshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-8.60, -34, 21.10],
+    scale: 1,
+    image: '/images/characters/Wendyy.webp',
+    description: "Wendy Testaburger's house. She's the smartest kid in school and will absolutely kick your ass if you mess with her or Stan.",
+    category: 'house'
+  },
+  {
+    id: 'tokenshouse',
+    name: "Black's House",
+    model: '/3Dmodels/tokenshouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [5.40, -34, -20.06],
+    scale: 1,
+    image: '/images/characters/Token_Black2.webp',
+    description: "Token Black's rich-ass mansion. He's literally the only black kid in town until Nichole showed up. His name is NOT ironic, guys. Seriously.",
+    category: 'house'
+  },
+  {
+    id: 'tuckershouse',
+    name: "Tucker's House",
+    model: '/3Dmodels/tuckershouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-0.30, -34, 20.12],
+    scale: 1,
+    image: '/images/characters/Craig-tucker.webp',
+    description: "Craig Tucker's house. Home of the middle-finger king, Stripe the guinea pig, and Red. If I were you, I'd flip this description off.",
+    category: 'house'
+  },
+  {
+    id: 'valmershouse',
+    name: "Valmer's House",
+    model: '/3Dmodels/valmershouse_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [8.14, -34, 19.42],
+    scale: 1,
+    image: '/images/characters/Jimmy-valmer.webp',
+    description: "Jimmy Valmer's place. Best comedian in South Park. W-w-wow, what a great audience! He's also faster than the Special Olympics kids.",
+    category: 'house'
+  },
+  {
+    id: 'houses',
+    name: 'Generic Houses',
+    model: '/3Dmodels/houses_compressed.glb',
+    position: [0, -34, 0],
+    scale: 1,
+    category: 'house',
+    interactive: false
+  },
+  
+  {
+    id: 'businessservices',
+    name: 'Business Services',
+    model: '/3Dmodels/Buisnessservices_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-2.35, -34, 8.05],
+    cameraSide: 'right',
+    scale: 1,
+    description: "Generic office building. Probably where people do boring shit before going to Skeeter's to drink away their depression. Yay capitalism!",
+    category: 'business'
+  },
+  {
+    id: 'dmobile',
+    name: 'D-Mobile',
+    model: '/3Dmodels/d-mobile_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [4.41, -34, 9.64],
+    scale: 1,
+    image: ['/images/characters/Creatures-local-creatures-crab-king.webp', '/images/characters/300px-Crab-people.webp'],
+    description: "Cell phone store where kids learn about contracts and data plans. Totally not run by Crab People. Taste like crab, talk like people. CRAB PEOPLE, CRAB PEOPLE!",
+    category: 'business'
+  },
+  {
+    id: 'office',
+    name: 'Office',
+    model: '/3Dmodels/office_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [6.29, -34, 11.16],
+    scale: 1,
+    description: "Another boring office building. Where dreams go to die and middle management thrives. At least it's not as depressing as Bennigan's.",
+    category: 'business'
+  },
+  {
+    id: 'pepperminthippo',
+    name: 'Peppermint Hippo',
+    model: '/3Dmodels/pepperminthippo_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-13.59, -34, -8.22],
+    cameraSide: 'left',
+    scale: 1,
+    image: '/images/characters/Adults-red-light-district-spontaneous-bootay.webp',
+    description: "A gentleman's club featuring Spontaneous Bootay performances. Randy threw dollar bills at a 'Lorde' hologram here. Kids learned about lap dances. For science!",
+    category: 'business'
+  },
+  {
+    id: 'skeetersbar',
+    name: "Skeeter's Bar",
+    model: '/3Dmodels/skeetersbar_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-32.23, -34, -5.00],
+    cameraSide: 'right',
+    scale: 1,
+    image: '/images/characters/Skeeter.webp',
+    description: "Skeeter's Bar & Cocktails. Where rednecks drink, fights break out, and someone always yells 'We don't take kindly to your types around here!'",
+    category: 'business'
+  },
+  {
+    id: 'sloppy2nds',
+    name: "Sloppy 2nds",
+    model: '/3Dmodels/sloppy2nds_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [12.76, -34, 10.57],
+    scale: 1,
+    description: "Thrift store selling used crap. Where Kenny's family shops exclusively. You can find literally anything here, including dignity. Used.",
+    category: 'business'
+  },
+  {
+    id: 'tomsrhinoplasty',
+    name: "Tom's Rhinoplasty",
+    model: '/3Dmodels/tomsrhinoplasty_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [7.76, -34, 10.81],
+    scale: 1,
+    image: '/images/characters/DoctorTom.webp',
+    description: "Tom's Rhinoplasty, where Mr. Garrison got a nose job and tits. The hottest substitute teacher ever worked here. Then she got shot into space.",
+    category: 'business'
+  },
+  {
+    id: 'unplannedparenthood',
+    name: 'Unplanned Parenthood',
+    model: '/3Dmodels/unplannedparenthood_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-3.90, -34, 11.31],
+    scale: 1,
+    image: '/images/characters/Doctors-unplanned-parenthood-counselor.webp',
+    description: "The abortion clinic. Where Cartman tried to abort himself to avoid Kyle. Also featured in the stem cell research and trojan condom wars.",
+    category: 'business'
+  },
+  
+  {
+    id: 'farm',
+    name: 'Farm',
+    model: '/3Dmodels/farm_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [26, -34, -40],
+    scale: 1,
+    image: '/images/characters/FarmerCarlDenkins.webp',
+    description: "A farm with animals that have probably been violated by Cartman. Or experimented on. Or both. Don't ask questions. Just accept it.",
+    category: 'nature'
+  },
+  {
+    id: 'fence',
+    name: 'Fence',
+    model: '/3Dmodels/fence_compressed.glb',
+    position: [0, -34, 0],
+    scale: 1,
+    description: 'Hek.',
+    category: 'decoration',
+    interactive: false
+  },
+  {
+    id: 'fence2',
+    name: 'Fence 2',
+    model: '/3Dmodels/fence2_compressed.glb',
+    position: [0, -34, 0],
+    scale: 1,
+    description: 'Hek variant 2.',
+    category: 'decoration',
+    interactive: false
+  },
+  
+  {
+    id: 'kenny',
+    name: 'Kenny',
+    model: '/3Dmodels/kenny_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [6.74, -34, 42.09],
+    targetHeight: 3.5,
+    scale: 1,
+    image: '/images/characters/Zombies-zombie-kenny.webp',
+    description: "Oh my God, they killed Kenny! You bastards! Mmmph mmmph mmmph! He's Mysterion by night, poor as f*ck by day, and immortal because of Cthulhu. Dies constantly.",
+    category: 'character'
+  },
+  
+  {
+    id: 'casabonita',
+    name: 'Casa Bonita',
+    model: '/3Dmodels/casabonitasign_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [46.33, -38, -16],
+    cameraDistance: 0.5,
+    scale: 1,
+    image: '/images/characters/Casa_Bonita_location.webp',
+    description: "Cartman's favorite place on Earth! More Mexican than Mexico itself. Features: 30-foot cliff divers, Black Bart's Cave, puppet shows, a haunted gorilla cave, endless sopapillas, and mediocre food that nobody cares about. Cartman once faked Butters' kidnapping and hid him in a bomb shelter for a week just to go in his place. Worth it.",
+    externalUrl: 'https://www.casabonitadenver.com/',
+    category: 'landmark'
+  },
+  {
+    id: 'cross',
+    name: 'Cross',
+    model: '/3Dmodels/cross_compressed.glb',
+    position: [0, -34, 0],
+    scale: 1,
+    description: 'Cross.',
+    category: 'decoration',
+    interactive: false
+  },
+  {
+    id: 'sparrowprince',
+    name: 'Sparrow Prince',
+    model: '/3Dmodels/sparrowprince_compressed.glb',
+    position: [0, -34, 0],
+    cameraTarget: [-5.99, -34, 31.74],
+    cameraDistance: 0.1,
+    cameraHeight: 1,
+    targetHeight: 0,
+    cameraSide: 'right',
+    scale: 1,
+    description: 'The Sparrow Prince. A mysterious figure in South Park.',
+    category: 'landmark'
+  }
+]

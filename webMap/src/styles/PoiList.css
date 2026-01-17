@@ -1,0 +1,133 @@
+.poi-sidebar {
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  width: 260px;
+  max-height: 80vh;
+  background-color: #FFD700;
+  border: 5px solid black;
+  border-left: none;
+  box-shadow: 6px 0 0 black;
+  font-family: 'Comic Sans MS', cursive;
+  z-index: 100;
+  display: flex;
+}
+
+.poi-sidebar.closed {
+  left: -260px;
+}
+
+.toggle-button {
+  position: fixed;
+  left: 260px;
+  bottom: 50%;
+  width: 40px;
+  height: 80px;
+  background-color: #FFD700;
+  border: 5px solid black;
+  border-left: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 6px 0 0 black;
+  z-index: 101;
+}
+
+.toggle-button.closed {
+  left: 0;
+}
+
+.toggle-button:hover {
+  background-color: #FFC700;
+}
+
+.poi-content {
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.poi-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 4px solid black;
+  color: black;
+  text-transform: uppercase;
+}
+
+.category-section {
+  margin-bottom: 25px;
+}
+
+.category-header {
+  background-color: #FF6B35;
+  color: white;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 3px solid black;
+  box-shadow: 3px 3px 0 black;
+  text-align: center;
+}
+
+.poi-item {
+  background-color: white;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 0 black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.poi-item:hover {
+  background-color: #00BFFF;
+  color: white;
+  transform: rotate(-1deg) scale(1.02);
+  box-shadow: 4px 4px 0 black;
+}
+
+.poi-item.selected {
+  background-color: #00BFFF;
+  color: white;
+  box-shadow: 4px 4px 0 black;
+}
+
+.poi-item.casabonita {
+  background-color: white;
+  color: black;
+}
+
+.poi-item.casabonita:hover {
+  background-color: #FF69B4;
+  color: white;
+}
+
+.poi-item.casabonita.selected {
+  background-color: #FF69B4;
+  color: white;
+}
+
+.poi-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.poi-content::-webkit-scrollbar-track {
+  background: white;
+  border: 2px solid black;
+}
+
+.poi-content::-webkit-scrollbar-thumb {
+  background: #FF6B35;
+  border: 2px solid black;
+}
+
+.poi-content::-webkit-scrollbar-thumb:hover {
+  background: #FF5520;
+}
