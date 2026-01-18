@@ -560,7 +560,7 @@ export const poiData = [
     name: 'Sparrow Prince',
     model: '/3Dmodels/sparrowprince_compressed.glb',
     position: [0, -34, 0],
-    cameraTarget: [-5.99, -34, 31.74],
+    cameraTarget: [-5.99, -33.5, 31.74],
     cameraDistance: 0.1,
     cameraHeight: 1,
     targetHeight: 0,

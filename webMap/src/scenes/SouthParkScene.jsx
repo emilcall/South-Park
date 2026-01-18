@@ -58,6 +58,64 @@ const MistCloud = ({ position }) => {
   )
 }
 
+const FeatherSparkles = ({ position }) => {
+  const pointsRef = useRef()
+  const [opacity, setOpacity] = useState(1)
+  const velocities = useRef([])
+  
+  const particleCount = 25
+  
+  const positions = useMemo(() => {
+    const pos = new Float32Array(particleCount * 3)
+    velocities.current = []
+    for (let i = 0; i < particleCount; i++) {
+      pos[i * 3] = position[0]
+      pos[i * 3 + 1] = position[1]
+      pos[i * 3 + 2] = position[2]
+      velocities.current.push({
+        x: (Math.random() - 0.5) * 8,
+        y: Math.random() * 3 + 2,
+        z: (Math.random() - 0.5) * 8
+      })
+    }
+    return pos
+  }, [position])
+  
+  useFrame((state, delta) => {
+    if (pointsRef.current && opacity > 0) {
+      const posArray = pointsRef.current.geometry.attributes.position.array
+      for (let i = 0; i < particleCount; i++) {
+        posArray[i * 3] += velocities.current[i].x * delta
+        posArray[i * 3 + 1] += velocities.current[i].y * delta
+        posArray[i * 3 + 2] += velocities.current[i].z * delta
+        velocities.current[i].y -= delta * 3
+      }
+      pointsRef.current.geometry.attributes.position.needsUpdate = true
+      setOpacity(prev => Math.max(prev - delta * 0.4, 0))
+    }
+  })
+  
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={particleCount}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.08}
+        color="#8B4513"
+        transparent
+        opacity={opacity}
+        sizeAttenuation
+      />
+    </points>
+  )
+}
+
 const HeavenlyGlow = ({ fading }) => {
   const lightRef = useRef()
   const [intensity, setIntensity] = useState(0)
@@ -258,6 +316,9 @@ const SouthParkScene = ({ onPoiClick, selectedPoi, debugMode = false, onOpenExte
       {fogPlanes}
       {showBloodEffect && sparrowPrincePoi && (
         <MistCloud position={[sparrowPrincePoi.cameraTarget[0], 0, sparrowPrincePoi.cameraTarget[2]]} />
+      )}
+      {showBloodEffect && sparrowPrincePoi && (
+        <FeatherSparkles position={[sparrowPrincePoi.cameraTarget[0], 0, sparrowPrincePoi.cameraTarget[2]]} />
       )}
       {showHeavenlyGlow && <HeavenlyGlow fading={heavenlyGlowFading} />}
     </Suspense>
