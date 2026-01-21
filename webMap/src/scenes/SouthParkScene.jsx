@@ -8,7 +8,7 @@ import { poiData } from '../data/poiData'
 const MistCloud = ({ position }) => {
   const groupRef = useRef()
   const [scale, setScale] = useState(0.1)
-  const [opacity, setOpacity] = useState(0.6)
+  const [opacity, setOpacity] = useState(0.85)
   const [fadeOut, setFadeOut] = useState(false)
   
   useEffect(() => {
@@ -63,7 +63,7 @@ const FeatherSparkles = ({ position }) => {
   const [opacity, setOpacity] = useState(1)
   const velocities = useRef([])
   
-  const particleCount = 25
+  const particleCount = 50
   
   const positions = useMemo(() => {
     const pos = new Float32Array(particleCount * 3)

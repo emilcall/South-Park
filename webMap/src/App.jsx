@@ -915,16 +915,16 @@ function App() {
               }
               setTimeout(() => {
                 setShowBloodEffect(true)
-              }, 200)
+              }, 600)
               setTimeout(() => {
                 setShowBloodEffect(false)
-              }, 1300)
+              }, 1700)
               setTimeout(() => {
                 setSparrowShot(true)
               }, 500)
               setTimeout(() => {
                 setShowScope(false)
-              }, 1500)
+              }, 1000)
             }}
             style={{
               position: 'absolute',
