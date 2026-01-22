@@ -12,6 +12,7 @@ import SouthParkScene from './scenes/SouthParkScene'
 import Clouds from './components/Environment/Clouds'
 import SnowSystem from './components/Effects/SnowSystem'
 import { poiData } from './data/poiData'
+import { Analytics } from '@vercel/analytics/react'
 
 const MistPlane = () => {
   const texture = useMemo(() => {
@@ -1018,5 +1019,6 @@ function App() {
     </div>
   )
 }
+<Analytics />
 
 export default App
