@@ -1016,9 +1016,9 @@ function App() {
           }
         }
       `}</style>
+      <Analytics />
     </div>
   )
 }
-<Analytics />
 
 export default App
